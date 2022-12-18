@@ -1,5 +1,6 @@
 package ie.atu.Passenger;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +46,14 @@ public class PassengerController {
     {
         return myService.findPassengerByAgeRange(age1, age2);
     }
+
+    @PutMapping("/edit/{count}/{choice}/{value}")
+    public void editPassenger(@PathVariable("count") int count,@PathVariable("choice") String choice,@PathVariable("value") String value)
+    {
+        myService.editPassenger(count, choice, value);
+
+    }
+
+
 
 }

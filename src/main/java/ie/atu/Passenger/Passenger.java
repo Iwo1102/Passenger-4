@@ -27,7 +27,7 @@ public class Passenger {
 
 
     public Passenger(String title, String name, String id, int phone, int age) {
-        this.title = title(title);
+        /*this.title =*/ title(title);
         this.name = name(name);
         this.id = id(id);
         this.phone = phone(phone);

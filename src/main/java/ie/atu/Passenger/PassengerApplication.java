@@ -12,31 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@RestController
+
 @SpringBootApplication
-@RequestMapping(path="api/passenger")
+
 public class PassengerApplication {
-
-	PassengerService myService;
-
-
-	public PassengerApplication(PassengerService myService) {
-		this.myService = myService;
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(PassengerApplication.class, args);
 	}
-
-	@GetMapping
-	public List<Passenger> getPassengers() {
-		return myService.getPassengers();
-	}
-
-	@GetMapping("/{passengerID}")
-	public Passenger getPassenger(@PathVariable String passengerID)
-	{
-		return myService.getPassenger(passengerID);
-	}
-
 }

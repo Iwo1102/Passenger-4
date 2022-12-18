@@ -28,5 +28,9 @@ public class PassengerService {
         passengerRepo.save(passenger);
     }
 
+    public Passenger findPassengerByName(String name)
+    {
+        return passengerRepo.findPassengerByName(name);
+    }
 
 }

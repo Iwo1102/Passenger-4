@@ -1,11 +1,9 @@
 package ie.atu.Passenger;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @AllArgsConstructor
@@ -42,4 +40,33 @@ public class PassengerService {
     {
         return passengerRepo.findPassengerByAge(age1, age2);
     }
+
+    public void editPassenger(int count, String choice, String value) {
+       Passenger passenger = passengerRepo.findPassengerByCount(count);
+       switch (choice)
+       {
+           case "title":
+               passenger.title = value;
+               break;
+           case "name":
+               passenger.name = value;
+               break;
+           case "id":
+               passenger.id = value;
+               break;
+           case "phone":
+               passenger.phone = Integer.parseInt(value);
+               break;
+           case "age":
+               passenger.age = Integer.parseInt(value);
+               break;
+           default:
+               break;
+       }
+       passengerRepo.save(passenger);
+    }
 }
+
+
+
+

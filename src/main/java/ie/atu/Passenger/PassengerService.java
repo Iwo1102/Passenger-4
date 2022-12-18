@@ -9,14 +9,14 @@ import java.util.List;
 @Service
 public class PassengerService {
     public List<Passenger> getPassengers() {
-        List<Passenger> myPassenger = List.of(
+        List<Passenger> myPassengers = List.of(
                 new Passenger("mr", "Iwo", "1234678901", 1245612, 34),
                 new Passenger("mr", "Iwo2", "1234678901", 1245612, 22),
                 new Passenger("mr", "Iwo3", "2112678901", 1245612, 76));
-        return myPassenger;
+        return myPassengers;
     }
 
-    public Passenger getPassenger(String passengerID)
+    public Passenger getPassenger(String PassengerID)
     {
         Passenger myPassenger = new Passenger("mr", "Iwo4", "112344551", 1245612, 34);
         return myPassenger;

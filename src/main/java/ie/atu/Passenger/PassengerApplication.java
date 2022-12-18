@@ -1,5 +1,6 @@
 package ie.atu.Passenger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,6 @@ import java.util.List;
 @RestController
 @SpringBootApplication
 @RequestMapping(path="api/passenger")
-
 public class PassengerApplication {
 
 	PassengerService myService;

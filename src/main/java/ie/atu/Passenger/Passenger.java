@@ -3,14 +3,20 @@ package ie.atu.Passenger;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-@AllArgsConstructor
 public class Passenger {
     String title;
     String name;
     String id;
     int phone;
     int age;
+
+    public Passenger(String title, String name, String id, int phone, int age) {
+        this.title = title(title);
+        this.name = name(name);
+        this.id = id(id);
+        this.phone = phone(phone);
+        this.age = age(age);
+    }
 
     public String title(String title) {
         char titleChar[] = title.toCharArray();
@@ -32,8 +38,8 @@ public class Passenger {
 
     public String id(String str) {
         int count = 0;
-        double n;
-        n = Double.parseDouble(str);
+        int n;
+        n = Integer.parseInt(str);
         while (n != 0)
         {
             n = n/10;

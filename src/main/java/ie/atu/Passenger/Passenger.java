@@ -1,14 +1,31 @@
 package ie.atu.Passenger;
 
+import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table
+
 public class Passenger {
     String title;
     String name;
     String id;
     int phone;
     int age;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long count;
+
 
     public Passenger(String title, String name, String id, int phone, int age) {
         this.title = title(title);

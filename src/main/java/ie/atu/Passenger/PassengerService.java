@@ -1,19 +1,19 @@
 package ie.atu.Passenger;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-
+@AllArgsConstructor
 @Service
 public class PassengerService {
+
+    private final PassengerRepo passengerRepo;
     public List<Passenger> getPassengers() {
-        List<Passenger> myPassengers = List.of(
-                new Passenger("mr", "Iwo", "1234678901", 1245612, 34),
-                new Passenger("mr", "Iwo2", "1234678901", 1245612, 22),
-                new Passenger("mr", "Iwo3", "2112678901", 1245612, 76));
-        return myPassengers;
+
+        return passengerRepo.findAll();
     }
 
     public Passenger getPassenger(String PassengerID)

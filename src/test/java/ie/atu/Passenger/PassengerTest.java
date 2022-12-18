@@ -22,7 +22,7 @@ class PassengerTest {
     @Test
     void testFailTitle()
     {
-        Exception e_message = assertThrows(IllegalArgumentException.class, () -> new Passenger ("rs", "Iwo", "12346", 1245612, 32));
+        Exception e_message = assertThrows(IllegalArgumentException.class, () -> new Passenger ("s", "Iwo", "12346", 1245612, 32));
         assertEquals("Can only be Mr, Ms or Mrs",e_message.getMessage());
     }
 
@@ -41,12 +41,12 @@ class PassengerTest {
     @Test
     void TestID()
     {
-        assertEquals(1622991122, testPass.id("1622991122"));
+        assertEquals("1622991122", testPass.id("1622991122"));
     }
     @Test
     void testFailID()
     {
-        Exception e_message = assertThrows(IllegalArgumentException.class, () -> new Passenger ("mr", "Iwo", "62299112", 24612, 111));
+        Exception e_message = assertThrows(IllegalArgumentException.class, () -> new Passenger ("mr", "Iwo", "82813", 24612, 111));
         assertEquals("ID has to have a minimum of 10 digits",e_message.getMessage());
     }
 

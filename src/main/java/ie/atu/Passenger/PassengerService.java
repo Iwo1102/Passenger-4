@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 @AllArgsConstructor
@@ -21,4 +23,10 @@ public class PassengerService {
         Passenger myPassenger = new Passenger("mr", "Iwo4", "112344551", 1245612, 34);
         return myPassenger;
     }
+    public void savePassenger(Passenger passenger)
+    {
+        passengerRepo.save(passenger);
+    }
+
+
 }

@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  #our program container
+  passenger-container:
+    image: passenger:0.0.1-SNAPSHOT
+    container_name: passenger3
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/passenger-container
+    ports:
+      - 8081:8081
+    links:
+      - db
+
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+
+    services:
+      app:
+        image: 'passenger3:latest'
+        build:
+          context: .
+        container_name: passenger
+        depends_on:
+          - db
+        environment:
+          - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+          - SPRING_DATASOURCE_USERNAME=compose-postgres
+          - SPRING_DATASOURCE_PASSWORD=compose-postgres
+          - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+      db:
+        image: 'postgres:13.1-alpine'
+        container_name: db
+        environment:
+          - POSTGRES_USER=compose-postgres
+          - POSTGRES_PASSWORD=compose-postgres
